@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "github.com/svcodestore/sv-sso-gin/proto/application";
+
+package application;
+
+import "google/protobuf/struct.proto";
+
+service Application {
+  rpc GetApplicationsByOrganizationId(GetApplicationsByOrganizationIdRequest) returns (GetApplicationsByOrganizationIdReply) {}
+  rpc GetApplicationById(GetApplicationByIdRequest) returns (GetApplicationByIdReply) {}
+  rpc GetApplicationSecretByClientId(GetApplicationSecretByClientIdRequest) returns (GetApplicationSecretByClientIdReply) {}
+  rpc GetAvailableApplications(GetAvailableApplicationsRequest) returns (GetAvailableApplicationsReply) {}
+}
+
+message GetApplicationsByOrganizationIdRequest {
+  string organizationId = 1;
+}
+
+message GetApplicationsByOrganizationIdReply {
+  google.protobuf.Struct Applications = 1;
+}
+
+message GetApplicationByIdRequest {
+  string id = 1;
+}
+
+message GetApplicationByIdReply {
+  google.protobuf.Struct Application = 1;
+}
+
+message GetApplicationSecretByClientIdRequest {
+  string clientId = 1;
+}
+
+message GetApplicationSecretByClientIdReply {
+  string ClientSecret = 1;
+}
+
+
+message GetAvailableApplicationsRequest {
+}
+
+message GetAvailableApplicationsReply {
+  google.protobuf.Struct Applications = 1;
+}

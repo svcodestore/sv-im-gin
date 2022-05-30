@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "github.com/svcodestore/sv-auth-gin/proto/oauth";
+
+package auth;
+
+import "google/protobuf/struct.proto";
+
+service Auth {
+  rpc GetAuthMenusWithApplicationIdAndUserId(
+      GetAuthMenusWithApplicationIdAndUserIdRequest)
+      returns (GetAuthMenusWithApplicationIdAndUserIdReply) {}
+}
+
+message GetAuthMenusWithApplicationIdAndUserIdRequest {
+  string applicationId = 1;
+  string userId = 2;
+}
+
+message GetAuthMenusWithApplicationIdAndUserIdReply {
+  google.protobuf.Struct AuthMenus = 1;
+}

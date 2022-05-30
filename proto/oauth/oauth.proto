@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option go_package = "github.com/svcodestore/sv-sso-gin/proto/oauth";
+
+package oauth;
+
+import "google/protobuf/struct.proto";
+
+service Oauth {
+  rpc GetGrantCode(GetGrantCodeRequest) returns (GetGrantCodeReply) {}
+  rpc GetOauthCode(GetOauthCodeRequest) returns (GetOauthCodeReply) {}
+  rpc Login(LoginRequest) returns (LoginReply) {}
+  rpc Logout(LogoutRequest) returns (LogoutReply) {}
+  rpc IsUserLogin(IsUserLoginRequest) returns (IsUserLoginReply) {}
+}
+
+message GetGrantCodeRequest {
+  string responseType = 1;
+  string clientId = 2;
+  string token = 3;
+}
+
+message GetGrantCodeReply {
+  google.protobuf.Struct GrantCode = 1;
+}
+
+message GetOauthCodeRequest {
+  string grantType = 1;
+  string clientId = 2;
+  string clientSecret = 3;
+  string code = 4;
+  string redirectUri = 5;
+}
+
+message GetOauthCodeReply {
+  google.protobuf.Struct OauthInfo = 1;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+  string loginType = 3;
+  string clientId = 4;
+}
+
+message LoginReply {
+  google.protobuf.Struct OauthInfo = 1;
+}
+
+message LogoutRequest {
+  string accessToken = 1;
+}
+
+message LogoutReply {
+  google.protobuf.Struct LogoutResult = 1;
+}
+
+
+message IsUserLoginRequest {
+  string accessToken = 1;
+}
+
+message IsUserLoginReply {
+  google.protobuf.Struct IsUserLoginResult = 1;
+}

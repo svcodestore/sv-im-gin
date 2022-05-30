@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option go_package = "github.com/svcodestore/sv-sso-gin/proto/user";
+
+package user;
+
+import "google/protobuf/struct.proto";
+
+service User {
+  rpc GetUserById(GetUserByIdRequest) returns (GetUserByIdReply) {}
+  rpc GetAllUser(GetAllUserRequest) returns (GetAllUserReply) {}
+  rpc GetUsersByApplicationId(GetUsersByApplicationIdRequest) returns (GetUsersByApplicationIdReply) {}
+  rpc GetAvailableUsers(GetAvailableUsersRequest) returns (GetAvailableUsersReply) {}
+  rpc GetAvailableUsersByApplicationId(GetAvailableUsersByApplicationIdRequest) returns (GetAvailableUsersByApplicationIdReply) {}
+}
+
+message GetUserByIdRequest {
+  string id = 1;
+}
+
+message GetUserByIdReply {
+  google.protobuf.Struct User = 1;
+}
+
+message GetAllUserRequest {
+}
+
+message GetAllUserReply {
+  google.protobuf.Struct Users = 1;
+}
+
+message GetUsersByApplicationIdRequest {
+  string applicationId = 1;
+}
+
+message GetUsersByApplicationIdReply {
+  google.protobuf.Struct Users = 1;
+}
+
+message GetAvailableUsersRequest {
+}
+
+message GetAvailableUsersReply {
+  google.protobuf.Struct Users = 1;
+}
+
+message GetAvailableUsersByApplicationIdRequest {
+  string applicationId = 1;
+}
+
+message GetAvailableUsersByApplicationIdReply {
+  google.protobuf.Struct Users = 1;
+}
